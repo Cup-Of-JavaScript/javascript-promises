@@ -109,7 +109,7 @@ Output:
 
 ## Ex 5.
 
-Create an arrow function called `getNameShortZip` This function calls the following web API endpoint:
+Create an arrow function called `getNamesShortZip` This function calls the following web API endpoint:
 
 ```
 Method: GET
@@ -120,7 +120,7 @@ This function returns the names of all the people in alphabetical order that hav
 
 Usage:
 ```
-let names = await getNameShortZip();
+let names = await getNamesShortZip();
 console.log(names);
 ```
 
