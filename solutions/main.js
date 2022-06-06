@@ -25,9 +25,32 @@ const ex4 = async () => {
     console.log(names);
 }
 
+const ex5 = async () => {
+    let names = await getNameShortZip();
+    console.log(names);
+}
+
 //
 // Your functions here...
 //
+
+const getNameShortZip = async () => {
+    let retval = [];
+    try {
+        let users = await axios.get(`https://jsonplaceholder.typicode.com/users`);
+        users = users.data
+        for (let u of users) {
+            if (u.address.zipcode.length == 5) {
+                retval.push(u.name)
+            }
+        }
+    }
+    catch (err) {
+        console.log(err)
+    }
+    retval.sort();
+    return retval
+}
 
 const getNames = async () => {
     let retval = [];
@@ -76,7 +99,7 @@ const getUTCDateTime = () => {
 }
 
 const main = async () => {
-    ex4();
+    ex5();
 }
 
 main();

@@ -76,8 +76,7 @@ Leanne Graham
 
 ## Ex. 4
 
-Create an arrow function called `getNames` that accepts a userId as a parameter.  This function calls the following
-web API endpoint:
+Create an arrow function called `getNames`. This function calls the following  web API endpoint:
 
 ```
 Method: GET
@@ -108,3 +107,24 @@ Output:
 ]
 ```
 
+## Ex 5.
+
+Create an arrow function called `getNameShortZip` This function calls the following web API endpoint:
+
+```
+Method: GET
+URL: https://jsonplaceholder.typicode.com/users
+```
+
+This function returns the names of all the people in alphabetical order that have a zipcode whose length is 5 digits.
+
+Usage:
+```
+let names = await getNameShortZip();
+console.log(names);
+```
+
+Output:
+```
+[ 'Chelsey Dietrich', 'Nicholas Runolfsdottir V' ]
+```
