@@ -21,8 +21,8 @@ const ex3 = async () => {
 }
 
 const ex4 = async () => {
-    let name = await getNames();
-    console.log(name);
+    let names = await getNames();
+    console.log(names);
 }
 
 //
@@ -30,14 +30,18 @@ const ex4 = async () => {
 //
 
 const getNames = async () => {
-    let retval = null;
+    let retval = [];
     try {
-        let result = await axios.get(`https://jsonplaceholder.typicode.com/users`);
-        retval = result.data
+        let users = await axios.get(`https://jsonplaceholder.typicode.com/users`);
+        users = users.data
+        for (let u of users) {
+            retval.push(u.name)
+        }
     }
     catch (err) {
         console.log(err)
     }
+    retval.sort();
     return retval
 }
 

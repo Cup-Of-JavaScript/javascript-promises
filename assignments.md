@@ -76,4 +76,35 @@ Leanne Graham
 
 ## Ex. 4
 
+Create an arrow function called `getNames` that accepts a userId as a parameter.  This function calls the following
+web API endpoint:
+
+```
+Method: GET
+URL: https://jsonplaceholder.typicode.com/users
+```
+
+This function returns the names of all the people in alphabetical order.
+
+Usage:
+```
+let names = await getNames();
+console.log(names);
+```
+
+Output:
+```
+[
+  'Chelsey Dietrich',
+  'Clementina DuBuque',
+  'Clementine Bauch',
+  'Ervin Howell',
+  'Glenna Reichert',
+  'Kurtis Weissnat',
+  'Leanne Graham',
+  'Mrs. Dennis Schulist',
+  'Nicholas Runolfsdottir V',
+  'Patricia Lebsack'
+]
+```
 
