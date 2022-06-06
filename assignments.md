@@ -1,4 +1,4 @@
-# JavaScript Promises Assignments
+# JavaScript Promises/Web API Assignments
 
 ## Ex. 1 
 
@@ -22,14 +22,14 @@ Note: This is an academic example and should not be used in production (doesn't 
 ## Ex. 2
 
 Create an arrow function called `countCharsInBody` that accepts a userId as a parameter.  This function calls the following
-web API endpoint where user id falls between 1 and 10.
+web API endpoint where user id falls between 1 and 10:
 
 ```
 Method: GET 
 URL: https://jsonplaceholder.typicode.com/posts/{user id}
 ```
 
-This arrow function returns the number of characters in the post's body.
+This arrow function returns the number of characters in the post's body:
 
 ```
 {
@@ -54,7 +54,7 @@ Output:
 ## Ex. 3
 
 Create an arrow function called `getFirstName` that accepts a userId as a parameter.  This function calls the following
-web API endpoint where user id falls between 1 and 10.
+web API endpoint where user id falls between 1 and 10:
 
 ```
 Method: GET
@@ -73,4 +73,7 @@ Output:
 ```
 Leanne Graham
 ```
+
+## Ex. 4
+
 
