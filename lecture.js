@@ -35,4 +35,20 @@ const main = async () => {
     // }
 }
 
-main();
+const nestedObjects = () => {
+    let p = {
+        firstName: "joe",
+        lastName: "smith", 
+        address: {
+            street: "123 green street",
+            city: "NY",
+            state: "NY",
+            zip: 14519
+        }
+    }
+
+    console.log(p.address.street)
+}
+
+//main();
+nestedObjects();
