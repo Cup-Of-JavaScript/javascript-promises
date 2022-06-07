@@ -38,7 +38,7 @@ const main = async () => {
 const nestedObjects = () => {
     let p = {
         firstName: "joe",
-        lastName: "smith", 
+        lastName: "smith",
         address: {
             street: "123 green street",
             city: "NY",
@@ -47,8 +47,8 @@ const nestedObjects = () => {
         }
     }
 
-    console.log(p.address.street)
+    console.table(p.address.city + " " + p.address.street);
 }
 
-//main();
-nestedObjects();
+main();
+//nestedObjects();
