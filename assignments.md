@@ -107,7 +107,7 @@ Output:
 ]
 ```
 
-## Ex 5.
+## Ex. 5
 
 Create an arrow function called `getNamesShortZip` This function calls the following web API endpoint:
 
@@ -127,4 +127,59 @@ console.log(names);
 Output:
 ```
 [ 'Chelsey Dietrich', 'Nicholas Runolfsdottir V' ]
+```
+
+
+## Ex. 6
+
+Create an arrow function called `getPostWithName` that accepts a post id. This function calls the following web API endpoints:
+
+```
+Methods: GET
+URLs: 
+  https://jsonplaceholder.typicode.com/posts/{postId}
+  https://jsonplaceholder.typicode.com/users/{userId}
+```
+
+This function augments the `/posts/` endpoint by adding the users name.
+
+Usage #1:
+```
+let result = await getPostWithName(1); // 1 is the post id.
+console.log(result);
+```
+
+Output:
+```
+{
+  userId: 1,
+  id: 1,
+  title: 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',
+  body: 'quia et suscipit\n' +
+    'suscipit recusandae consequuntur expedita et cum\n' +        
+    'reprehenderit molestiae ut ut quas totam\n' +
+    'nostrum rerum est autem sunt rem eveniet architecto',        
+  name: 'Leanne Graham'
+}
+```
+
+
+Usage #2:
+```
+let result = await getPostWithName(11); // 11 is the post id.
+console.log(result);
+```
+
+Output:
+```
+{
+  userId: 2,
+  id: 11,
+  title: 'et ea vero quia laudantium autem',
+  body: 'delectus reiciendis molestiae occaecati non minima eveniet qui voluptatibus\n' +
+    'accusamus in eum beatae sit\n' +
+    'vel qui neque voluptates ut commodi qui incidunt\n' +        
+    'ut animi commodi',
+  name: 'Ervin Howell'
+}
 ```
