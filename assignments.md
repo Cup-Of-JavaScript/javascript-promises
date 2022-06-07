@@ -159,7 +159,7 @@ Output:
     'suscipit recusandae consequuntur expedita et cum\n' +        
     'reprehenderit molestiae ut ut quas totam\n' +
     'nostrum rerum est autem sunt rem eveniet architecto',        
-  name: 'Leanne Graham'
+  name: 'Leanne Graham'  <=========== our function adds this field for userId: 1
 }
 ```
 
@@ -180,6 +180,6 @@ Output:
     'accusamus in eum beatae sit\n' +
     'vel qui neque voluptates ut commodi qui incidunt\n' +        
     'ut animi commodi',
-  name: 'Ervin Howell'
+  name: 'Ervin Howell' <=========== our function adds this field for userId: 11
 }
 ```
