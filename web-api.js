@@ -7,7 +7,7 @@ const getUser = async (userId) => {
         retval = result.data;
     }
     catch (err) {
-        console.log(err)
+        console.log(err);
     }
     return retval;
 }
