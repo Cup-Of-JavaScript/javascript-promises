@@ -2,53 +2,40 @@
 // https://youtu.be/PoRJizFvM7s
 //
 
-const sleep = ms => new Promise(r => setTimeout(r, ms));
-
 const doWork = () => {
-    return new Promise(async (resolve, reject) => {
-        let success = false;
+    return new Promise((resolve, reject) => {
+        let success = true;
+        // Do some real work here...
         if (success) {
-            await sleep(3000)
             resolve("ok")
         } else {
-            await sleep(3000)
             reject("fail")
         }
     });
 }
 
 const main = async () => {
+    // let myPromise = doWork();
+    // myPromise
+    //     .then(i => 
+    //         {
+    //             console.log("Resolve: " + i) // handle resolves
+    //         }) 
+    //     .catch( i => 
+    //         {
+    //             console.log("Reject: " + i) // handle the rejects
+    //         })
 
-    let myPromise = doWork();
-    myPromise
-        .then(i => console.log(i))
-        .catch(i => console.log(i))
+    // console.log('here')
 
-    console.log('here')
-
-    // try {
-    //     let result = await doWork();
-    //     console.log(result)
-    // }
-    // catch (err) {
-    //     console.log(err)
-    // }
-}
-
-const nestedObjects = () => {
-    let p = {
-        firstName: "joe",
-        lastName: "smith",
-        address: {
-            street: "123 green street",
-            city: "NY",
-            state: "NY",
-            zip: 14519
-        }
+    try {
+        let result = await doWork();
+        console.log("Success: " + result) // resolve block
     }
-
-    console.table(p.address.city + " " + p.address.street);
+    catch (err) {
+        console.log("Catch: " + err)  // reject block
+    }
 }
 
 main();
-//nestedObjects();
+
