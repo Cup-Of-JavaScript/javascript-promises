@@ -21,7 +21,8 @@ const ex3 = async () => {
 };
 
 const ex4 = async () => {
-  console.log("TODO...");
+    let names = await getNames();
+    console.log(names);
 };
 
 const ex5 = async () => {
@@ -35,6 +36,18 @@ const ex6 = async () => {
 //
 // Your functions here...
 //
+
+//ex4
+const getNames = async () => {
+    try {
+        let result = await axios.get(`https://jsonplaceholder.typicode.com/users`);
+        let names = result.data
+        return names;
+    }
+    catch (err) {
+        console.log(err);
+      }
+}
 
 //ex3
 const getFirstName = async (userid) => {
@@ -73,7 +86,7 @@ const getUTCDateTime = () => {
 };
 
 const main = async () => {
-  ex3();
+  ex4();
 };
 
 main();
