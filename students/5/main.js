@@ -21,7 +21,8 @@ const ex2 = async () => {
 };
 
 const ex3 = async () => {
-    
+  let name = await getFirstName(1);
+  console.log(name);
 };
 
 const ex4 = async () => {
@@ -60,12 +61,20 @@ const countCharsInBody = async (userId) => {
     return retval;
 }
 
+//exercise 3
+const getFirstName = async (userId) =>{
+  let personName = null;
+  let result = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`);
+  personName = result.data.name
+  return personName
+}
+
 
 
 
 
 const main = async () => {
-  ex2();
+  ex3();
 };
 
 main();
