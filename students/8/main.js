@@ -75,7 +75,7 @@ const getUTCDateTime = () => {
 
 
 const main = async () => {
-    ex2();
+    ex3();
 }
 
 main();
