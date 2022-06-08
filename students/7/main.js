@@ -25,13 +25,10 @@ const ex2 = async () => {
 
 const countCharsInBody = async (userId) => {
     let count = 0;
-    try {
-        let result = await axios.get(`https://jsonplaceholder.typicode.com/posts/${userId}`);
-         count = result.data.body.length
-    }
-    catch (error) {
-        console.log(error);
-    }
+
+    let result = await axios.get(`https://jsonplaceholder.typicode.com/posts/${userId}`);
+    count = result.data.body.length
+    
     return count;
 }
 
