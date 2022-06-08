@@ -6,8 +6,9 @@
 const { default: axios } = require("axios");
 
 const ex1 = async () => {
-    console.log("TODO...")
-}
+    let theDate = await getUTCDateTime();
+    console.log(theDate);
+}    
 
 const ex2 = async () => {
     console.log("TODO...")
@@ -29,12 +30,15 @@ const ex6 = async () => {
     console.log("TODO...")
 }
 
-//
-// Your functions here...
-//
+const getUTCDateTime = () => {      //ex1
+    return new Promise((resolve) => {
+        let current = new Date()
+        resolve(current.toUTCString())
+     });
+}
 
 const main = async () => {
     ex1();
 }
 
-main();
+main()
