@@ -16,8 +16,6 @@ const getUTCDateTime = () => {
         res(date);
     })
 }
-
-////////////////////////////
 const ex2 = async () => {
     console.log("TODO...")
 }
