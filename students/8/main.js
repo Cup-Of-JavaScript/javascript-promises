@@ -37,9 +37,18 @@ const ex6 = async () => {
 
 // Ex 2
 
-const countCharsInBody = () => {
-    
+const countCharsInBody = async (userId) => {
+    try {
+        let result = await axios.get(`https://jsonplaceholder.typicode.com/posts/${userId}`);
+        let chars = Object.keys(result.data.body).length
+        return chars;
+    }
+    catch (err) {  // Promise reject("hey you failed")
+        console.log(err);
+    }
+
 }
+
 
 //Ex 1
 
