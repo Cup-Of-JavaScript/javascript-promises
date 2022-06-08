@@ -15,11 +15,13 @@ const ex1 = async () => {
 };
 
 const ex2 = async () => {
-  console.log("TODO...");
+    let userId = 1;
+    let characters = await countCharsInBody(userId);
+    console.log(characters)
 };
 
 const ex3 = async () => {
-  console.log("TODO...");
+    
 };
 
 const ex4 = async () => {
@@ -44,11 +46,26 @@ const getUTCDateTime = () => {
   });
 };
 
+//exercise 2
+const countCharsInBody = async (userId) => {
+    let retval = null;
+    
+    try {
+        let result = await axios.get(`https://jsonplaceholder.typicode.com/posts/${userId}`);
+        retval = result.data.body.length
+    }
+    catch (err) { 
+        console.log(err);
+    }
+    return retval;
+}
+
+
 
 
 
 const main = async () => {
-  ex1();
+  ex2();
 };
 
 main();
