@@ -19,7 +19,12 @@ const ex2 = async () => {
 };
 
 const ex3 = async () => {
-  console.log("TODO...");
+    try {
+        let name = await getFirstName(1);
+        console.log(name);
+      } catch (err) {
+        console.log(err);
+      }
 };
 
 const ex4 = async () => {
@@ -43,6 +48,9 @@ const getUTCDateTime = () => {
     resolve(utcDateTimeNow);
   });
 };
+
+//
+
 
 
 
