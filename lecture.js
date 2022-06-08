@@ -5,6 +5,7 @@
 const doWork = () => {
     return new Promise((resolve, reject) => {
         let success = true;
+        // call some legacy async code...
         // Do some real work here...
         if (success) {
             resolve("ok")

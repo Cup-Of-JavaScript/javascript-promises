@@ -4,23 +4,31 @@ const person = () => {
         name: "Joe", 
         age: 10
     }
-    // p.ssn = "111-11-1111"
-    console.log(p)
+
+    p.ssn = "111-11-1111"
+    p.hairColor = "Brown"
+
+    let array = []
+    array.push(p)
+    array[0].shoeSize = 10
+
+    console.log(array[0])
 }
 
 const car = () => {
-    var make = "Toyota"
-    var model = "GR86"
+    let make = "Toyota"
+    let model = "GR86"
 
     let car = {
         make,
         model
     }
+
     console.log(car);
 }
 
 const main = () => {
-    person();
+    //person();
     //car();
 }
 
