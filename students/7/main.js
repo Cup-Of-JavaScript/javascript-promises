@@ -32,8 +32,6 @@ const countCharsInBody = async (userId) => {
     catch (error) {
         console.log(error);
     }
-    
-    //console.log(result.data.body.length)
     return count;
 }
 
