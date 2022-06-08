@@ -37,7 +37,12 @@ const countCharsInBody = async (userId) => {
 }
 
 const ex3 = async () => {
-    console.log("TODO...")
+    let name = await getFirstName(1);
+    console.log(name);
+}
+
+const getFirstName =() => {
+    
 }
 
 const ex4 = async () => {
