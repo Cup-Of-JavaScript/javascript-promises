@@ -13,7 +13,7 @@ const car = () => {
     var model = "GR86"
 
     let car = {
-        make,  // theMake
+        make,
         model
     }
     console.log(car);
