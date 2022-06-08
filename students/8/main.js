@@ -38,9 +38,7 @@ const ex6 = async () => {
 
 const getUTCDateTime = () => {
     return new Promise((resolve) => {
-        let today1 = new Date();
-        let today = today1.toUTCString();
-        resolve(today)
+        resolve(new Date().toUTCString())
     });
 }
 
