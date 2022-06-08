@@ -11,11 +11,13 @@ const ex1 = async () => {
 }
 
 const ex2 = async () => {
-    console.log("TODO...")
+    let characters = await countCharsInBody(1);
+    console.log(characters)
 }
 
 const ex3 = async () => {
-    console.log("TODO...")
+    let name = await getFirstName(1);
+    console.log(name);
 }
 
 const ex4 = async () => {
@@ -34,6 +36,35 @@ const ex6 = async () => {
 // Your functions here...
 //
 
+// Ex 3
+
+const getFirstName = async (userId) => {
+    try {
+        let result = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`);
+        let name = result.data.name
+        return name;
+    }
+    catch (err) {  // Promise reject("hey you failed")
+        console.log(err);
+    }
+
+}
+
+// Ex 2
+
+const countCharsInBody = async (userId) => {
+    try {
+        let result = await axios.get(`https://jsonplaceholder.typicode.com/posts/${userId}`);
+        let chars = result.data.body.length
+        return chars;
+    }
+    catch (err) {  // Promise reject("hey you failed")
+        console.log(err);
+    }
+
+}
+
+
 //Ex 1
 
 const getUTCDateTime = () => {
@@ -44,7 +75,7 @@ const getUTCDateTime = () => {
 
 
 const main = async () => {
-    ex1();
+    ex2();
 }
 
 main();
