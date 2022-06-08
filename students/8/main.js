@@ -21,7 +21,8 @@ const ex3 = async () => {
 }
 
 const ex4 = async () => {
-    console.log("TODO...")
+    let names = await getNames();
+    console.log(names);
 }
 
 const ex5 = async () => {
@@ -35,6 +36,24 @@ const ex6 = async () => {
 //
 // Your functions here...
 //
+
+// Ex 4
+
+const getNames = async () => {
+    let nameArray = [];
+    try {
+        let result = await axios.get(`https://jsonplaceholder.typicode.com/users/`);
+        let names = result.data
+        for (i = 0; i < names.length; i++) {
+            nameArray.push(names[i].name)
+        }
+        return nameArray.sort();
+    }
+    catch (err) {  // Promise reject("hey you failed")
+        console.log(err);
+    }
+}
+
 
 // Ex 3
 
@@ -75,7 +94,7 @@ const getUTCDateTime = () => {
 
 
 const main = async () => {
-    ex3();
+    ex4();
 }
 
 main();
