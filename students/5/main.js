@@ -92,19 +92,18 @@ const getNames = async () => {
 
 //exercise 5
 const getNamesShortZip = async () => {
-  let retval=[];
+  let getNames = [];
   try {
     let result = await axios.get(`https://jsonplaceholder.typicode.com/users`);
-    let array = result.data;
-    for (let i = 0; i < array.length, i++; ) {
-      if (array[i].address.zipcode.length < 6) {
-        retval.push(array[i].name);
+    for (let user of result.data) {
+      if (user.address.zipcode.length < 6) {
+        getNames.push(user.name);
       }
     }
-    return retval;
-  } catch (error) {
-    console.log(error);
+  } catch (err) {
+    console.log(err.message);
   }
+  return getNames;
 };
 
 const main = async () => {
