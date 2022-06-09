@@ -46,15 +46,15 @@ const getNamesShortZip = async () => {
         let result = await axios.get(`https://jsonplaceholder.typicode.com/users/`);
         let names = result.data
         for (i = 0; i < names.length; i++) {
-            if(names[i].address.zipcode.length < 6 ){
-            nameArray.push(names[i].name)
+            if (names[i].address.zipcode.length < 6) {
+                nameArray.push(names[i].name)
             }
         }
         return nameArray;
     }
     catch (err) {  // Promise reject("hey you failed")
         console.log(err);
-    } 
+    }
 }
 
 // Ex 4
