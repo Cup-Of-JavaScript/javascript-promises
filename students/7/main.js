@@ -41,8 +41,17 @@ const ex3 = async () => {
     console.log(name);
 }
 
-const getFirstName =() => {
-    
+const getFirstName = async (userId) => {
+    let user = 0;
+    try {
+        let result = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`);
+        user = result.data.name
+
+    }
+    catch(e) {
+        console.log(e)
+    }
+    return user;
 }
 
 const ex4 = async () => {
@@ -59,7 +68,7 @@ const ex6 = async () => {
 
 
 const main = async () => {
-    ex2();
+    ex3();
 }
 
 main();
