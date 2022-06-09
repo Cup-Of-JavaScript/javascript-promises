@@ -60,6 +60,7 @@ const ex4 = async () => {
     console.log(names);
 }
 
+
 const getNames = async () => {
     let userNames = [];
         try {
