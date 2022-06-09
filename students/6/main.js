@@ -60,7 +60,7 @@ const getNames = async () => {                               //ex4
         let result = await axios.get(`https://jsonplaceholder.typicode.com/users`);
         let names = result.data
         for (i = 0; i < names.length; i++) {
-            array.push(names[i])
+            array.push(names[i].name)
         }
 
         return array.sort();
@@ -72,7 +72,9 @@ const getNames = async () => {                               //ex4
 }
 
 
-const getFirstName = async (userId) => {                    //ex3
+
+
+const getFirstName = async (userId) => {                         //ex3
     try {
         let result = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`);
         let name = result.data.name
@@ -82,7 +84,6 @@ const getFirstName = async (userId) => {                    //ex3
         console.log(err);
     }
 }
-
 
 const countCharsInBody = async (userId) => {                //ex2
     let count = 0;

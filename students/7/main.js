@@ -56,11 +56,46 @@ const getFirstName = async (userId) => {
 }
 
 const ex4 = async () => {
-    console.log("TODO...")
+    let names = await getNames();
+    console.log(names);
 }
 
+
+const getNames = async () => {
+    let userNames = [];
+    try {
+                
+        let result = await axios.get(`https://jsonplaceholder.typicode.com/users/`);
+         for (let i of result.data) {
+             userNames.push(i.name)
+        }
+    }
+    catch(e) {
+                console.log(e)
+    }
+    return userNames.sort();
+}
+    
+
 const ex5 = async () => {
-    console.log("TODO...")
+    let names = await getNamesShortZip();
+    console.log(names);}
+
+const getNamesShortZip = async () => {
+    let userNames = [];
+
+    try {     
+        let result = await axios.get(`https://jsonplaceholder.typicode.com/users`);
+         for (let i of result.data) {
+             if (i.address.zipcode.length == 5){
+             userNames.push(i.name)
+            }
+        }
+    }
+    catch(e) {
+        console.log(e)
+    }
+    return userNames.sort();
 }
 
 const ex6 = async () => {
@@ -69,7 +104,11 @@ const ex6 = async () => {
 
 
 const main = async () => {
+<<<<<<< HEAD
     ex3();
+=======
+    ex5();
+>>>>>>> 6b920fcb570e4150d9b6d69bd4b8125775a68cd7
 }
 
 

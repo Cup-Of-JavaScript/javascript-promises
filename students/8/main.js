@@ -31,13 +31,32 @@ const ex5 = async () => {
 }
 
 const ex6 = async () => {
-    console.log("TODO...")
+    let result = await getPostWithName(11); // 1 is the post id.
+    console.log(result);
 }
 
 //
 // Your functions here...
 //
 
+<<<<<<< HEAD
+=======
+// Ex 6
+
+const getPostWithName = async (Id) => {
+    let postName = null;
+    try {
+        let post = await axios.get(`https://jsonplaceholder.typicode.com/posts/${Id}`);
+        let userdata = await axios.get(`https://jsonplaceholder.typicode.com/users/${post.data.userId}`);
+        postName = Object.assign(post.data,  { name: userdata.data.name})        
+    }
+    catch (err) {  // Promise reject("hey you failed")
+        console.log(err);
+    }
+    return postName;
+
+}
+>>>>>>> 6b920fcb570e4150d9b6d69bd4b8125775a68cd7
 // Ex 5
 
 const getNamesShortZip = async () => {
@@ -114,7 +133,11 @@ const getUTCDateTime = () => {
 
 
 const main = async () => {
+<<<<<<< HEAD
     ex5();
+=======
+    ex6();
+>>>>>>> 6b920fcb570e4150d9b6d69bd4b8125775a68cd7
 }
 
 main();

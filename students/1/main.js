@@ -26,7 +26,8 @@ const ex4 = async () => {
 }
 
 const ex5 = async () => {
-    console.log("TODO...")
+    let names = await getNamesShortZip();
+    console.log(names);
 }
 
 const ex6 = async () => {
@@ -36,6 +37,27 @@ const ex6 = async () => {
 //
 // Your functions here...
 //
+<<<<<<< HEAD
+=======
+const getNamesShortZip = async () => {
+    let nameZip = [];
+    try {
+        let result = await axios.get(`https://jsonplaceholder.typicode.com/users`);
+        //console.log(result.data) // [{user: 1}, {user: 2}, {user: 3}, ...]
+        for (let user of result.data) {
+            if (user.address.zipcode.length == 5) {
+                nameZip.push(user.name)
+            }
+        }
+        nameZip.sort()
+    }
+    catch (err) {  
+        console.log(err);
+    }
+    return nameZip;
+}
+
+>>>>>>> 6b920fcb570e4150d9b6d69bd4b8125775a68cd7
 const getNames = async () => {
     let allNames = [];
     try {
@@ -89,7 +111,11 @@ const countCharsInBody = async (userid) => {
 }
 
 const main = async () => {
+<<<<<<< HEAD
     ex4();
+=======
+    ex5();
+>>>>>>> 6b920fcb570e4150d9b6d69bd4b8125775a68cd7
 }
 
 main();
