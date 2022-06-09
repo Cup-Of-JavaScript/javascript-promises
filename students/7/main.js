@@ -56,8 +56,27 @@ const getFirstName = async (userId) => {
 }
 
 const ex4 = async () => {
-    console.log("TODO...")
+    let names = await getNames();
+    console.log(names);
 }
+
+
+const getNames = async () => {
+    let userNames = [];
+    try {
+                
+        let result = await axios.get(`https://jsonplaceholder.typicode.com/users/`);
+         for (let i of result.data) {
+             userNames.push(i.name)
+        }
+    }
+    catch(e) {
+                console.log(e)
+    }
+    return userNames.sort();
+}
+    
+
 
 const ex5 = async () => {
     console.log("TODO...")
@@ -69,7 +88,7 @@ const ex6 = async () => {
 
 
 const main = async () => {
-    ex3();
+    ex4();
 }
 
 
