@@ -22,6 +22,8 @@ const ex2 = async () => {
 }
 
 const ex3 = async () => {
+    let name = await getFirstName(1);
+    console.log(name);
     console.log("TODO...")
 }
 
@@ -40,6 +42,9 @@ const ex6 = async () => {
 //
 // Your functions here...
 //
+
+// EX 3
+
 
 // EX 2
 const countCharsInBody = async (userId) => {
