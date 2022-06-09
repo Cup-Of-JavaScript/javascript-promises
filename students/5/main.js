@@ -4,6 +4,7 @@
 //
 
 const { default: axios } = require("axios");
+const e = require("express");
 
 const ex1 = async () => {
   try {
@@ -36,7 +37,8 @@ const ex5 = async () => {
 };
 
 const ex6 = async () => {
-  console.log("TODO...");
+  let result = await getPostWithName(11);
+  console.log(result);
 };
 
 //
@@ -106,8 +108,22 @@ const getNamesShortZip = async () => {
   return getNames;
 };
 
+//exercise 6
+const getPostWithName = async (postId) => {
+  let postName = [];
+  try {
+    userId =1;
+    let result = await axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}`);
+    let result2 = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`);
+    postName = result.data
+    postName.name = 'Ervin Howell'
+  } catch (err) {
+    console.log(err);
+  }
+  return postName;
+};
 const main = async () => {
-  ex5();
+  ex6();
 };
 
 main();
