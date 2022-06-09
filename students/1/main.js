@@ -31,12 +31,36 @@ const ex5 = async () => {
 }
 
 const ex6 = async () => {
-    console.log("TODO...")
+    let result = await getPostWithName(1); // 1 is the post id.
+    console.log(result);
 }
 
 //
 // Your functions here...
 //
+
+const getPostWithName = async (postId) => {
+    let endRes = 0;
+    let endSults = 0;
+    try {
+        let result = await axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}`);
+        endRes = result.data
+        endRes.name = 'Leanne Graham'
+       
+
+        console.log(endRes.userId)
+
+        let userId = 1;
+        let result2 = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`);
+        //console.log(endsults)
+        endSults = result2.data.userId.name
+    }
+    catch (err) {
+        console.log(err);
+    }
+    return endRes
+}
+
 const getNamesShortZip = async () => {
     let nameZip = [];
     try {
@@ -49,7 +73,7 @@ const getNamesShortZip = async () => {
         }
         nameZip.sort()
     }
-    catch (err) {  
+    catch (err) {
         console.log(err);
     }
     return nameZip;
@@ -59,14 +83,14 @@ const getNames = async () => {
     let allNames = [];
     try {
         let result = await axios.get(`https://jsonplaceholder.typicode.com/users`);
-         // allNames is an array that contains objects
-        
-        for(let users of result.data){
+        // allNames is an array that contains objects
+
+        for (let users of result.data) {
             allNames.push(users.name)
         }
         allNames.sort()
-    }   
-    catch (err) {  
+    }
+    catch (err) {
         console.log(err);
     }
     return allNames;
@@ -74,12 +98,12 @@ const getNames = async () => {
 
 
 const getFirstName = async (userid) => {
-    let fName = 0; 
+    let fName = 0;
     try {
         let result = await axios.get(`https://jsonplaceholder.typicode.com/users/${userid}`);
         fName = result.data.name
     }
-    catch (err) {  
+    catch (err) {
         console.log(err);
     }
     return fName;
@@ -90,25 +114,25 @@ const getUTCDateTime = () => {
         let currentTD = new Date();
         let day = currentTD.toUTCString();
         let currently = day;
-        resolve(currently) 
+        resolve(currently)
     });
 }
 
 const countCharsInBody = async (userid) => {
-    
-        let totalChar = 0;
-        try {
-            let result = await axios.get(`https://jsonplaceholder.typicode.com/posts/${userid}`);
-            totalChar = result.data.body.length;
-        }
-        catch (err) {  
-            console.log(err);
-        }
-        return totalChar;
+
+    let totalChar = 0;
+    try {
+        let result = await axios.get(`https://jsonplaceholder.typicode.com/posts/${userid}`);
+        totalChar = result.data.body.length;
+    }
+    catch (err) {
+        console.log(err);
+    }
+    return totalChar;
 }
 
 const main = async () => {
-    ex5();
+    ex6();
 }
 
 main();
