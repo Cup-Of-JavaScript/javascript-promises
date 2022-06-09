@@ -8,7 +8,7 @@ const { default: axios } = require("axios");
 const ex1 = async () => {
     let theDate = await getUTCDateTime();
     console.log(theDate);
-}    
+}
 
 const ex2 = async () => {
     let characters = await countCharsInBody(1);
@@ -16,7 +16,8 @@ const ex2 = async () => {
 }
 
 const ex3 = async () => {
-    console.log("TODO...")
+    let name = await getFirstName(1);
+    console.log(name);
 }
 
 const ex4 = async () => {
@@ -31,31 +32,40 @@ const ex6 = async () => {
     console.log("TODO...")
 }
 
-const countCharsInBody = async (userId) => {            //ex2
-    let count = 0;
+const getFirstName = async (userId) => {                      //ex3
     try {
-        let result = await axios.get(`https://jsonplaceholder.typicode.com/posts/${userId}`);
-        count = result.data.body.length
-     }   
-    catch (err) {   //Promise rejection
+        let result = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`);
+        let name = result.data.name
+        return name;
+    }
+    catch (err) {                                           //Promise rejection
         console.log(err);
     }
-     return count; 
-   
 }
 
+    const countCharsInBody = async (userId) => {            //ex2
+        let count = 0;
+        try {
+            let result = await axios.get(`https://jsonplaceholder.typicode.com/posts/${userId}`);
+            count = result.data.body.length
+        }
+        catch (err) {                                        //Promise rejection
+            console.log(err);
+        }
+        return count;
+
+    }
 
 
+    const getUTCDateTime = () => {                           //ex1
+        return new Promise((resolve) => {
+            let current = new Date()
+            resolve(current.toUTCString())
+        });
+    }
 
-const getUTCDateTime = () => {      //ex1
-    return new Promise((resolve) => {
-        let current = new Date()
-        resolve(current.toUTCString())
-     });
-}
+    const main = async () => {
+        ex3();
+    }
 
-const main = async () => {
-    ex2();
-}
-
-main()
+    main()
