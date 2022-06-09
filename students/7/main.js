@@ -77,11 +77,14 @@ const getNames = async () => {
 }
     
 
-
 const ex5 = async () => {
-    console.log("TODO...")
-}
+    let names = await getNamesShortZip();
+    console.log(names);}
 
+const getNamesShortZip = async () => {
+//     Method: GET
+// URL: https://jsonplaceholder.typicode.com/users
+}
 const ex6 = async () => {
     console.log("TODO...")
 }
