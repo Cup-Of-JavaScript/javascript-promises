@@ -26,20 +26,41 @@ const ex4 = async () => {
 }
 
 const ex5 = async () => {
-    console.log("TODO...")
+    let names = await getNamesShortZip();
+    console.log(names);
 }
 
 const ex6 = async () => {
     console.log("TODO...")
 }
 
-const getNames = async () => {                                //ex4
+
+const getNamesShortZip = async () => {                        //5
+    let zip = [];
+    try {
+        let result = await axios.get(`https://jsonplaceholder.typicode.com/users`);
+        let names = result.data
+        for (i = 0; i < names.length; i++) {
+            if(names[i].address.zipcode.length == 5){
+                zip.push(names[i].name);
+            }
+        }
+        return zip;
+    }
+    catch (err) {                                           //Promise rejection
+        console.log(err);
+    }
+}
+
+
+
+const getNames = async () => {                               //ex4
     let array = [];
     try {
         let result = await axios.get(`https://jsonplaceholder.typicode.com/users`);
         let names = result.data
         for (i = 0; i < names.length; i++) {
-            array.push(names[i].name)
+            array.push(names[i])
         }
 
         return array.sort();
@@ -51,9 +72,7 @@ const getNames = async () => {                                //ex4
 }
 
 
-
-
-const getFirstName = async (userId) => {                         //ex3
+const getFirstName = async (userId) => {                    //ex3
     try {
         let result = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`);
         let name = result.data.name
@@ -63,6 +82,7 @@ const getFirstName = async (userId) => {                         //ex3
         console.log(err);
     }
 }
+
 
 const countCharsInBody = async (userId) => {                //ex2
     let count = 0;
@@ -85,8 +105,9 @@ const getUTCDateTime = () => {                              //ex1
     });
 }
 
+
 const main = async () => {
-    ex4();
+    ex5();
 }
 
 main()

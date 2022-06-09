@@ -21,7 +21,8 @@ const ex3 = async () => {
 }
 
 const ex4 = async () => {
-    console.log("TODO...")
+    let names = await getNames();
+    console.log(names);
 }
 
 const ex5 = async () => {
@@ -35,6 +36,23 @@ const ex6 = async () => {
 //
 // Your functions here...
 //
+const getNames = async () => {
+    let allNames = [];
+    try {
+        let result = await axios.get(`https://jsonplaceholder.typicode.com/users`);
+         // allNames is an array that contains objects
+        
+        for(let users of result.data){
+            allNames.push(users.name)
+        }
+        allNames.sort()
+    }   
+    catch (err) {  
+        console.log(err);
+    }
+    return allNames;
+}
+
 
 const getFirstName = async (userid) => {
     let fName = 0; 
@@ -71,7 +89,7 @@ const countCharsInBody = async (userid) => {
 }
 
 const main = async () => {
-    ex3();
+    ex4();
 }
 
 main();
