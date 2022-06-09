@@ -88,8 +88,10 @@ const getNames = async () =>{
 }
 
 
+
+
 const main = async () => {
-  ex4();
+  ex5();
 };
 
 main();
