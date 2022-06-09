@@ -63,20 +63,18 @@ const ex4 = async () => {
 const getNames = async () => {
     let userNames = [];
         try {
-            
+                
             let result = await axios.get(`https://jsonplaceholder.typicode.com/users/`);
-            //userNames = [result.data.name]
-            for (let user of result) {
-                userNames.push(user.name)
-            }
-
-           console.log(userNames)
+                for (let i of result.data) {
+                     userNames.push(i.name)
+                }
         }
         catch(e) {
-            console.log(e)
+                console.log(e)
         }
-   // return userNames;
+    return userNames.sort();
 }
+    
 
 
 const ex5 = async () => {
