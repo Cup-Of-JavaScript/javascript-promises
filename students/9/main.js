@@ -11,7 +11,8 @@ const ex1 = async () => {
 }
 
 const ex2 = async () => {
-    console.log("TODO...")
+    let characters = await countCharsInBody(1);
+    console.log(characters)
 }
 
 const ex3 = async () => {
@@ -40,8 +41,21 @@ const getUTCDateTime = () => {
     })
 }
 
-const main = async () => {
-    ex1();
+const countCharsInBody = async (userId) => {            //ex2
+    let count = 0;
+    try {
+        let result = await axios.get(`https://jsonplaceholder.typicode.com/posts/${userId}`);
+        count = result.data.body.length
+     }   
+    catch (err) {   //Promise rejection
+        console.log(err);
+    }
+     return count; 
+
 }
 
-main();
+const main = async () => {
+    ex2();
+}
+
+main()
