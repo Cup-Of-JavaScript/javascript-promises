@@ -65,13 +65,17 @@ const getNames = async () => {
         try {
             
             let result = await axios.get(`https://jsonplaceholder.typicode.com/users/`);
-            usersName = result[0].name
-            //console.log(userNames)
+            //userNames = [result.data.name]
+            for (let user of result) {
+                userNames.push(user.name)
+            }
+
+           console.log(userNames)
         }
         catch(e) {
             console.log(e)
         }
-    return userNames;
+   // return userNames;
 }
 
 
