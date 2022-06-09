@@ -41,13 +41,13 @@ const getUTCDateTime = () => {
     })
 }
 
-const countCharsInBody = async (userId) => {            //ex2
+const countCharsInBody = async (userId) => {           
     let count = 0;
     try {
         let result = await axios.get(`https://jsonplaceholder.typicode.com/posts/${userId}`);
         count = result.data.body.length
      }   
-    catch (err) {   //Promise rejection
+    catch (err) {  
         console.log(err);
     }
      return count; 
