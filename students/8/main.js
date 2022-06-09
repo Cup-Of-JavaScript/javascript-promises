@@ -47,8 +47,7 @@ const getPostWithName = async (Id) => {
         let post = await axios.get(`https://jsonplaceholder.typicode.com/posts/${Id}`);
         let userdata = await axios.get(`https://jsonplaceholder.typicode.com/users/${post.data.userId}`);
         retval2 = { name: userdata.data.name}
-        postName = Object.assign(post.data, retval2)
-        
+        postName = Object.assign(post.data, retval2)        
     }
     catch (err) {  // Promise reject("hey you failed")
         console.log(err);
