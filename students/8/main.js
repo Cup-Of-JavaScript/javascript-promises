@@ -26,7 +26,8 @@ const ex4 = async () => {
 }
 
 const ex5 = async () => {
-    console.log("TODO...")
+    let names = await getNamesShortZip();
+    console.log(names);
 }
 
 const ex6 = async () => {
@@ -36,6 +37,25 @@ const ex6 = async () => {
 //
 // Your functions here...
 //
+
+// Ex 5
+
+const getNamesShortZip = async () => {
+    let nameArray = [];
+    try {
+        let result = await axios.get(`https://jsonplaceholder.typicode.com/users/`);
+        let names = result.data
+        for (i = 0; i < names.length; i++) {
+            if (names[i].address.zipcode.length < 6) {
+                nameArray.push(names[i].name)
+            }
+        }
+        return nameArray;
+    }
+    catch (err) {  // Promise reject("hey you failed")
+        console.log(err);
+    }
+}
 
 // Ex 4
 
@@ -94,7 +114,7 @@ const getUTCDateTime = () => {
 
 
 const main = async () => {
-    ex4();
+    ex5();
 }
 
 main();
