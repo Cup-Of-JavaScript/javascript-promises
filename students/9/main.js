@@ -6,65 +6,62 @@
 const { default: axios } = require("axios");
 
 const ex1 = async () => {
-    let theDate = await getUTCDateTime();
-    console.log(theDate);
-}
+  let theDate = await getUTCDateTime();
+  console.log(theDate);
+};
 
 const ex2 = async () => {
-    let characters = await countCharsInBody(1);
-    console.log(characters)
-}
+  let characters = await countCharsInBody(1);
+  console.log(characters);
+};
 
 const ex3 = async () => {
-    let name = await getFirstName(1);
-    console.log(name);
-}
+  let name = await getFirstName(1);
+  console.log(name);
+};
 
 const ex4 = async () => {
-    console.log("TODO...")
-}
+  console.log("TODO...");
+};
 
 const ex5 = async () => {
-    console.log("TODO...")
-}
+  console.log("TODO...");
+};
 
 const ex6 = async () => {
-    console.log("TODO...")
-}
+  console.log("TODO...");
+};
 
+const getUTCDateTime = () => {
+  return new Promise((resolve) => {
+    resolve(new Date().toUTCString());
+  });
+};
 
+const countCharsInBody = async (userId) => {
+  let count = 0;
+  try {
+    let result = await axios.get(
+      `https://jsonplaceholder.typicode.com/posts/${userId}`
+    );
+    count = result.data.body.length;
+  } catch (err) {
+    console.log(err);
+  }
+  return count;
+};
 
-    const getUTCDateTime = () => {
-        return new Promise((resolve) => {
-        resolve(new Date().toUTCString())
-      })
-    
-    } 
+const getFirstName = async (userId) => {
+  let personName = null;
+  let result = await axios.get(
+    `https://jsonplaceholder.typicode.com/users/${userId}`
+  );
+  personName = result.data.name;
+  return personName;
+};
 
-    const countCharsInBody = async (userId) => {           
-       let count = 0;
-        try {
-        let result = await axios.get(`https://jsonplaceholder.typicode.com/posts/${userId}`);
-        count = result.data.body.length
-        }   
-       catch (err) {  
-        console.log(err);
-        }
-     return count; 
+const main = async () => {
+  ex3();
+};
 
-    }
-
-   
-    const getFirstName = async (userId) =>{
-        let personName = null;
-        let result = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`);
-        personName = result.data.name
-        return personName
-    }
-      
-    
-    const main = async () => {
-    ex3();
-    };
-
-main()
+main();
