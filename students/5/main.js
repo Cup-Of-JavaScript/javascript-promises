@@ -15,15 +15,19 @@ const ex1 = async () => {
 };
 
 const ex2 = async () => {
-  console.log("TODO...");
+    let userId = 1;
+    let characters = await countCharsInBody(userId);
+    console.log(characters)
 };
 
 const ex3 = async () => {
-  console.log("TODO...");
+  let name = await getFirstName(1);
+  console.log(name);
 };
 
 const ex4 = async () => {
-  console.log("TODO...");
+  let names = await getNames();
+  console.log(names);
 };
 
 const ex5 = async () => {
@@ -44,11 +48,48 @@ const getUTCDateTime = () => {
   });
 };
 
+//exercise 2
+const countCharsInBody = async (userId) => {
+    let retval = null;
+    
+    try {
+        let result = await axios.get(`https://jsonplaceholder.typicode.com/posts/${userId}`);
+        retval = result.data.body.length
+    }
+    catch (err) { 
+        console.log(err);
+    }
+    return retval;
+}
 
+//exercise 3
+const getFirstName = async (userId) =>{
+  let personName = null;
+  let result = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`);
+  personName = result.data.name
+  return personName
+}
+
+//exercise 4
+const getNames = async () =>{
+  let allNames = [];
+  try {
+    let result = await axios.get(`https://jsonplaceholder.typicode.com/users`);
+    //console.log(result.data) // array of objects [{user},{user},{user}...]
+    for (let user of result.data) {
+      allNames.push(user.name)
+    }
+    allNames.sort()
+  }
+  catch (err) {
+    console.log(err.message);
+  }
+  return allNames;
+}
 
 
 const main = async () => {
-  ex1();
+  ex4();
 };
 
 main();

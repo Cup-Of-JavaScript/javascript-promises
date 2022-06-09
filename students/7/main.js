@@ -16,12 +16,43 @@ const getUTCDateTime = () => {
         res(date);
     })
 }
+
+
 const ex2 = async () => {
-    console.log("TODO...")
+    let characters = await countCharsInBody(1);
+    console.log(characters)
 }
 
+const countCharsInBody = async (userId) => {
+    let count = 0;
+
+    try {
+        let result = await axios.get(`https://jsonplaceholder.typicode.com/posts/${userId}`);
+        count = result.data.body.length
+    }
+    catch(error) {
+        console.log(error);
+    }
+    return count;
+}
+
+
 const ex3 = async () => {
-    console.log("TODO...")
+    let name = await getFirstName(1);
+    console.log(name);
+}
+
+const getFirstName = async (userId) => {
+    let user = 0;
+    try {
+        let result = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`);
+        user = result.data.name
+
+    }
+    catch(e) {
+        console.log(e)
+    }
+    return user;
 }
 
 const ex4 = async () => {
@@ -38,7 +69,8 @@ const ex6 = async () => {
 
 
 const main = async () => {
-    ex1();
+    ex3();
 }
+
 
 main();

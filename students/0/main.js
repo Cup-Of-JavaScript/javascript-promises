@@ -6,7 +6,7 @@
 const { default: axios } = require("axios");
 
 const ex1 = async () => {
-    console.log("TODO...")
+    console.log("Marty")
 }
 
 const ex2 = async () => {
