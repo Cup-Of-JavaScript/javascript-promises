@@ -82,16 +82,29 @@ const ex5 = async () => {
     console.log(names);}
 
 const getNamesShortZip = async () => {
-//     Method: GET
-// URL: https://jsonplaceholder.typicode.com/users
+    let userNames = [];
+
+    try {     
+        let result = await axios.get(`https://jsonplaceholder.typicode.com/users`);
+         for (let i of result.data) {
+             if (i.address.zipcode.length == 5){
+             userNames.push(i.name)
+            }
+        }
+    }
+    catch(e) {
+        console.log(e)
+    }
+    return userNames.sort();
 }
+
 const ex6 = async () => {
     console.log("TODO...")
 }
 
 
 const main = async () => {
-    ex4();
+    ex5();
 }
 
 
