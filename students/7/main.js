@@ -107,16 +107,16 @@ const ex6 = async () => {
 }
 
 const getPostWithName = async (postId) => {
-    let userPost = {};
+    let userPost = {}; //can be assigned null as well
     try {
         let route1 = await axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}`);
-        userPost = route1.data
-        // console.log(userPost.userId)
+        userPost = route1.data //---> this grabs a single post object
+        // console.log(userPost.userId)---> this grabs the object key that allows us to locate a single user by its ID
     
-        let route2 = await axios.get(`https://jsonplaceholder.typicode.com/users/${userPost.userId}`);
-        let user = route2.data
+        let route2 = await axios.get(`https://jsonplaceholder.typicode.com/users/${userPost.userId}`); 
+        let user = route2.data // ---> this grabs a single user object 
     
-        userPost.name = user.name
+        userPost.name = user.name // ---> this adds a key/value to an object
     }
     catch (e) {
         console.log(e.message)
@@ -127,6 +127,7 @@ const getPostWithName = async (postId) => {
 const main = async () => {
     ex6();
 
+    //Study Material:
     // let person1  = { name: "Joe", age: 10 }
     // let person2  = { name: "Alice", age: 20 }
     // let array = []
