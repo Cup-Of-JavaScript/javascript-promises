@@ -16,7 +16,9 @@ const ex1 = async () => {
 }
 
 const ex2 = async () => {
-    console.log("TODO...")
+    let userId = 1;
+    let characters = await countCharsInBody(userId);
+    console.log(characters)
 }
 
 const ex3 = async () => {
@@ -39,15 +41,28 @@ const ex6 = async () => {
 // Your functions here...
 //
 
+// EX 2
+const countCharsInBody = async (userId) => {
+    let retval = null;
+    try {
+        let result = await axios.get(`https://jsonplaceholder.typicode.com/posts/${userId}`);
+        retval = result.data.body.length
+    }
+    catch (err) { 
+        console.log(err);
+    }
+    return retval;
+}
+
+// EX 1
 const getUTCDateTime = () => {
     return new Promise((resolve) => {
         let getUTCDateTime = new Date().toUTCString()
         resolve(getUTCDateTime)
     })
 }
-
-const main = async () => {
-    ex1();
+ const main = async () => {
+    ex2();
 }
 
 main();

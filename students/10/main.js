@@ -21,11 +21,13 @@ const ex3 = async () => {
 };
 
 const ex4 = async () => {
-  console.log("TODO...");
+  let names = await getNames();
+  console.log(names);
 };
 
 const ex5 = async () => {
-  console.log("TODO...");
+  let names = await getNamesShortZip();
+  console.log(names);
 };
 
 const ex6 = async () => {
@@ -36,18 +38,48 @@ const ex6 = async () => {
 // Your functions here...
 //
 
+//ex5
+const getNamesShortZip = async () => {
+  let namesArray = [];
+  try {
+    let result = await axios.get(`https://jsonplaceholder.typicode.com/users`);
+    let name = result.data;
+    for (let i = 0; i < name.length; i++) {
+      if (name[i].address.zipcode.length < 6) {
+        namesArray.push(name[i].name);
+      }
+    }
+    return namesArray;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+//ex4
+const getNames = async () => {
+  let nameArray = [];
+  let result = await axios.get(`https://jsonplaceholder.typicode.com/users`);
+  for (let user of result.data) {
+    nameArray.push(user.name);
+  }
+
+  nameArray.sort();
+
+  return nameArray;
+};
+
 //ex3
 const getFirstName = async (userid) => {
   try {
-    let result = await axios.get(`https://jsonplaceholder.typicode.com/users/${userid}`);
-    let name = result.data.name
+    let result = await axios.get(
+      `https://jsonplaceholder.typicode.com/users/${userid}`
+    );
+    let name = result.data.name;
     return name;
-  } 
-  catch (err) {
+  } catch (err) {
     console.log(err);
   }
-  
-}
+};
 
 //ex2
 const countCharsInBody = async (userId) => {
@@ -73,7 +105,7 @@ const getUTCDateTime = () => {
 };
 
 const main = async () => {
-  ex3();
+  ex5();
 };
 
 main();

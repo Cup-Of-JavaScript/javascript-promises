@@ -33,7 +33,7 @@ const ex6 = async () => {
     console.log("TODO...")
 }
 
-const getNames = async () => {                                //ex4
+const getNames = async () => {                         //ex4
     let array = [];
     try {
         let result = await axios.get(`https://jsonplaceholder.typicode.com/users`);
