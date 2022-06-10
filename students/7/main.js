@@ -3,6 +3,8 @@
 // Date: 6/6/2022
 //
 
+"use strict";
+
 const { default: axios } = require("axios");
 
 const ex1 = async () => {
@@ -100,25 +102,40 @@ const getNamesShortZip = async () => {
 
 
 const ex6 = async () => {
-    let answer = await getPostWithName(1);
-    console.log(answer)
+    let result = await getPostWithName(1);
+    console.log(result)
 }
 
-const getPostWithName = async (id) => {
-    let user = [];
+const getPostWithName = async (postId) => {
+    let userPost = {};
     try {
-        let result = await axios.get(`https://jsonplaceholder.typicode.com/${postId}`);
-        let result2 = await axios.get(`https://jsonplaceholder.typicode.com/${userId}`);
-
-
+        let route1 = await axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}`);
+        userPost = route1.data
+        // console.log(userPost.userId)
+    
+        let route2 = await axios.get(`https://jsonplaceholder.typicode.com/users/${userPost.userId}`);
+        let user = route2.data
+    
+        userPost.name = user.name
     }
     catch (e) {
-        console.log(e)
-    }
+        console.log(e.message)
+    } 
+    return userPost;
 }
 
 const main = async () => {
     ex6();
+
+    // let person1  = { name: "Joe", age: 10 }
+    // let person2  = { name: "Alice", age: 20 }
+    // let array = []
+    // array.push(person1);
+    // array.push(person2);
+    // array[0].ssn = "111-11-1111"
+    // array[1].ssn = "222-22-2222"
+  
+    // console.log(array)
 }
 
 
