@@ -26,11 +26,30 @@ const ex4 = async () => {
 }
 
 const ex5 = async () => {
-    console.log("TODO...")
+    let names = await getNamesShortZip();
+    console.log(names);
 }
 
 const ex6 = async () => {
     console.log("TODO...")
+}
+
+const getNamesShortZip = async () => {                        //5
+    let zip = [];
+    try {
+        let result = await axios.get(`https://jsonplaceholder.typicode.com/users`);
+        let names = result.data
+        for (i = 0; i < names.length; i++) {
+            if(names[i].address.zipcode.length == 5){
+                zip.push(names[i].name);
+                
+            }
+        }   
+       return zip;
+    }
+    catch (err) {                                           //Promise rejection
+        console.log(err);
+   }
 }
 
 const getNames = async () => {                         //ex4
@@ -49,9 +68,6 @@ const getNames = async () => {                         //ex4
         console.log(err);
     }
 }
-
-
-
 
 const getFirstName = async (userId) => {                         //ex3
     try {
@@ -77,7 +93,6 @@ const countCharsInBody = async (userId) => {                //ex2
 
 }
 
-
 const getUTCDateTime = () => {                              //ex1
     return new Promise((resolve) => {
         let current = new Date()
@@ -86,7 +101,7 @@ const getUTCDateTime = () => {                              //ex1
 }
 
 const main = async () => {
-    ex4();
+    ex5();
 }
 
 main()
