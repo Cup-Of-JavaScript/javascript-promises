@@ -104,13 +104,16 @@ const ex6 = async () => {
     console.log(answer)
 }
 
-const getPostWithName = async () => {
-
+const getPostWithName = async (id) => {
+    let user = [];
     try {
+        let result = await axios.get(`https://jsonplaceholder.typicode.com/${postId}`);
+        let result2 = await axios.get(`https://jsonplaceholder.typicode.com/${userId}`);
+
 
     }
-    catch {
-        
+    catch (e) {
+        console.log(e)
     }
 }
 
