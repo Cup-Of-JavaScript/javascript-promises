@@ -70,9 +70,6 @@ const getNames = async () => {                               //ex4
     }
 }
 
-
-
-
 const getFirstName = async (userId) => {                         //ex3
     try {
         let result = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`);
