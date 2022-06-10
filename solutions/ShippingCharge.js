@@ -7,7 +7,7 @@ const main = async () => {
 }
 
 const calcShippingCharges = (users) => {
-    let = retval = []
+    let retval = []
     for (let user of users) {
         if (user.zipcode[0] == "5") {
             user.shippingCharge = "$5.00"
