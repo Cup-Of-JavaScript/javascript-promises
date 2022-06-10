@@ -31,12 +31,26 @@ const ex5 = async () => {
 };
 
 const ex6 = async () => {
-  console.log("TODO...");
+  let result = await getPostWithName(11); // 1 is the post id.
+  console.log(result);
 };
 
 //
 // Your functions here...
 //
+
+//ex6
+const getPostWithName = async (Id) => {
+  let posts = null;
+  try {
+    let result = await axios.get(`https://jsonplaceholder.typicode.com/posts/${Id}`);
+    let result2 = await axios.get(`https://jsonplaceholder.typicode.com/users/${result.data.userId}`);
+    posts = Object.assign(result.data, { name: result2.data.name });
+  } catch (err) {
+    console.log(err);
+  }
+  return posts;
+};
 
 //ex5
 const getNamesShortZip = async () => {
@@ -54,58 +68,3 @@ const getNamesShortZip = async () => {
     console.log(err);
   }
 };
-
-//ex4
-const getNames = async () => {
-  let nameArray = [];
-  let result = await axios.get(`https://jsonplaceholder.typicode.com/users`);
-  for (let user of result.data) {
-    nameArray.push(user.name);
-  }
-
-  nameArray.sort();
-
-  return nameArray;
-};
-
-//ex3
-const getFirstName = async (userid) => {
-  try {
-    let result = await axios.get(
-      `https://jsonplaceholder.typicode.com/users/${userid}`
-    );
-    let name = result.data.name;
-    return name;
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-//ex2
-const countCharsInBody = async (userId) => {
-  let count = 0;
-  try {
-    let result = await axios.get(
-      `https://jsonplaceholder.typicode.com/posts/${userId}`
-    );
-    count = result.data.body.length;
-  } catch (error) {
-    console.log(error);
-  }
-  return count;
-};
-
-//ex1
-const getUTCDateTime = () => {
-  return new Promise((resolve) => {
-    let currentday = new Date();
-    let current = currentday.toUTCString();
-    resolve(current);
-  });
-};
-
-const main = async () => {
-  ex5();
-};
-
-main();
