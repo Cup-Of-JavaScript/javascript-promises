@@ -30,9 +30,7 @@ const ex5 = async () => {
     console.log(names);
 }
 
-const ex6 = async () => {
-    console.log("TODO...")
-}
+
 
 
 const getNamesShortZip = async () => {                        //5
@@ -43,13 +41,14 @@ const getNamesShortZip = async () => {                        //5
         for (i = 0; i < names.length; i++) {
             if(names[i].address.zipcode.length == 5){
                 zip.push(names[i].name);
+                
             }
-        }
-        return zip;
+        }   
+       return zip;
     }
     catch (err) {                                           //Promise rejection
         console.log(err);
-    }
+   }
 }
 
 
@@ -108,7 +107,7 @@ const getUTCDateTime = () => {                              //ex1
 
 
 const main = async () => {
-    ex5();
+    ex3();
 }
 
 main()
