@@ -98,13 +98,24 @@ const getNamesShortZip = async () => {
     return userNames.sort();
 }
 
+
 const ex6 = async () => {
-    console.log("TODO...")
+    let answer = await getPostWithName(1);
+    console.log(answer)
 }
 
+const getPostWithName = async () => {
+
+    try {
+
+    }
+    catch {
+        
+    }
+}
 
 const main = async () => {
-    ex5();
+    ex6();
 }
 
 
