@@ -40,20 +40,16 @@ const ex6 = async () => {
 //
 
 const getPostWithName = async (postId) => {
-    let endRes = 0;
-    let endSults = 0;
+    let endRes = [];
+    let endSults = [];
     try {
         let result = await axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}`);
         endRes = result.data
-        endRes.name = 'Leanne Graham'
-       
 
-        console.log(endRes.userId)
-
-        let userId = 1;
+        let userId = endRes.userId;
         let result2 = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`);
-        //console.log(endsults)
-        endSults = result2.data.userId.name
+        endSults = result2.data.name
+        endRes.name = endSults
     }
     catch (err) {
         console.log(err);
