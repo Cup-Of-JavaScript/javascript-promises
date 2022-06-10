@@ -33,6 +33,8 @@ const ex6 = async () => {
     console.log("TODO...")
 }
 
+
+
 const getNames = async () => {                         //ex4
     let array = [];
     try {
