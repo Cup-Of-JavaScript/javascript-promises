@@ -109,19 +109,19 @@ const getNamesShortZip = async () => {
 };
 
 //exercise 6
-const getPostWithName = async (postId) => {
+const getPostWithName = async (Id) => {
   let postName = [];
   try {
-    userId =1;
-    let result = await axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}`);
-    let result2 = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`);
-    postName = result.data
-    postName.name = 'Ervin Howell'
-  } catch (err) {
+   let result = await axios.get(`https://jsonplaceholder.typicode.com/posts/${Id}`);
+   let result2 = await axios.get(`https://jsonplaceholder.typicode.com/users/${result.data.userId}`);
+    postName = Object.assign(result.data, {name: result2.data.name})
+  } 
+  catch (err) {
     console.log(err);
   }
   return postName;
 };
+
 const main = async () => {
   ex6();
 };
