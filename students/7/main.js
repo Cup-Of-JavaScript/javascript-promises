@@ -3,6 +3,8 @@
 // Date: 6/6/2022
 //
 
+"use strict";
+
 const { default: axios } = require("axios");
 
 const ex1 = async () => {
@@ -98,13 +100,43 @@ const getNamesShortZip = async () => {
     return userNames.sort();
 }
 
+
 const ex6 = async () => {
-    console.log("TODO...")
+    let result = await getPostWithName(1);
+    console.log(result)
 }
 
+const getPostWithName = async (postId) => {
+    let userPost = {}; //can be assigned null as well
+    try {
+        let route1 = await axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}`);
+        userPost = route1.data //---> this grabs a single post object
+        // console.log(userPost.userId)---> this grabs the object key that allows us to locate a single user by its ID
+    
+        let route2 = await axios.get(`https://jsonplaceholder.typicode.com/users/${userPost.userId}`); 
+        let user = route2.data // ---> this grabs a single user object 
+    
+        userPost.name = user.name // ---> this adds a key/value to an object
+    }
+    catch (e) {
+        console.log(e.message)
+    } 
+    return userPost;
+}
 
 const main = async () => {
-    ex5();
+    ex6();
+
+    //Study Material:
+    // let person1  = { name: "Joe", age: 10 }
+    // let person2  = { name: "Alice", age: 20 }
+    // let array = []
+    // array.push(person1);
+    // array.push(person2);
+    // array[0].ssn = "111-11-1111"
+    // array[1].ssn = "222-22-2222"
+  
+    // console.log(array)
 }
 
 
